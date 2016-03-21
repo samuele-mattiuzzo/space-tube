@@ -29,22 +29,52 @@
         <h1>Space tube</h1>
 
         <!-- the form -->
-        <form class="form-inline" method="post">
-          <div class="form-group">
-            <label class="sr-only" for="videoToExplore">Insert youtube video url or id</label>
-            <div class="input-group">
-              <div class="input-group-addon">&#128640;</div>
-              <input type="text" class="form-control" id="videoToExplore" placeholder="www.youtube.com/123">
+        <div class="row" id="formRow">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form class="form" method="post">
+
+                  <!-- video -->
+                  <div class="form-group">
+                    <label for="videoToExplore">Insert youtube video url or id</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">&#9658;</div>
+                      <input type="text" class="form-control" id="videoToExplore" placeholder="www.youtube.com/123">
+                    </div>
+                  </div>
+
+                  <!-- view count -->
+                  <div class="form-group">
+                    <label for="viewCount">Insert here the view count</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">&#128065;</div>
+                      <input type="text" class="form-control" id="viewCount" placeholder="123">
+                    </div>
+                  </div>
+
+                  <!-- space ship -->
+                  <div class="form-group">
+                    <label for="spaceShip">Select your spaceship</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">&#128640;</div>
+                      <select id="spaceShip" class="form-control">
+                        <option>Space Shuttle (17500 mph)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <input type="submit" class="btn btn-primary" value="Begin travels!!"></input>
+                </form>
             </div>
-          </div>
-          <input type="submit" class="btn btn-primary" value="Begin travels!!"></input>
-        </form>
+            <div class="col-md-4"></div>
+        </div>
 
-        <br>
-
-        <!-- the video player -->
-        <div id="player"></div>
-        <div id="stats"></div>
+        <!-- the main output: video, light-years count -->
+        <div class="row">
+            <!-- the video player -->
+            <div id="player"></div>
+            <div id="stats"></div>
+        </div>
 
         <!-- the end -->
       </div>
