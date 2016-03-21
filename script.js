@@ -50,13 +50,13 @@ function spawnPlayer(videoId, viewCount, spaceShip, spaceShipSpeed) {
 function onPlayerReady(event) {
     var duration = player.getDuration();
     var timeSpent = viewCount * duration; // in seconds
-    timeSpent = timeSpent / 3600; // in hours
 
-    var distance = convertToDistance(timeSpent, spaceShipSpeed);
+    var distance = convertToDistance(timeSpent/3600, spaceShipSpeed);
+    timeSpent = secondsToString(timeSpent);
 
     var message = "<p>";
-    message = message + "We could have traveled " + distance + " km in ";
-    message = message + timeSpent + " hours that we spent watching this";
+    message = message + "We could have traveled " + distance + " miles</p><p>";
+    message = message + timeSpent + " have been spent watching this";
     message = message + "</p>";
     statsDiv.innerHTML = message;
 
@@ -64,4 +64,13 @@ function onPlayerReady(event) {
 
 function convertToDistance(timeSpent, vehicleSpeed) {
     return timeSpent * vehicleSpeed;
+}
+
+function secondsToString(seconds) {
+    var numyears = Math.floor(seconds / 31536000);
+    var numdays = Math.floor((seconds % 31536000) / 86400);
+    var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+    var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+    var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+    return numyears + " years " +  numdays + " days " + numhours + " hours " + numminutes + " minutes " + numseconds + " seconds";
 }
