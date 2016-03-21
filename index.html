@@ -22,29 +22,71 @@
     </nav>
 
     <div class="container">
-
+        <h1>Space tube</h1>
       <div class="main-content">
 
         <!-- TODO: insert intro and something more meaningful here -->
-        <h1>Space tube</h1>
+
 
         <!-- the form -->
-        <form class="form-inline" method="post">
-          <div class="form-group">
-            <label class="sr-only" for="videoToExplore">Insert youtube video url or id</label>
-            <div class="input-group">
-              <div class="input-group-addon">&#128640;</div>
-              <input type="text" class="form-control" id="videoToExplore" placeholder="www.youtube.com/123">
+        <div class="row formRow">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <form class="form" method="post">
+
+                  <!-- video -->
+                  <div class="form-group">
+                    <label for="videoToExplore">Insert youtube video url or id</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">&#9658;</div>
+                      <input type="text" class="form-control" id="videoToExplore" placeholder="www.youtube.com/123">
+                    </div>
+                  </div>
+
+                  <!-- view count -->
+                  <div class="form-group">
+                    <label for="viewCount">Insert here the view count</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">&#128065;</div>
+                      <input type="text" class="form-control" id="viewCount" placeholder="123">
+                    </div>
+                  </div>
+
+                  <!-- space ship -->
+                  <div class="form-group">
+                    <label for="spaceShip">Select your spaceship</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">&#128640;</div>
+                      <select id="spaceShip" class="form-control">
+                        <option value=17500>Space Shuttle</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <input type="submit" class="btn btn-primary" value="Begin travels!!"></input>
+                </form>
             </div>
-          </div>
-          <input type="submit" class="btn btn-primary" value="Begin travels!!"></input>
-        </form>
+
+            <div class="col-md-7">
+                <ul>
+                    <li>Add your favourite video (eg: <strong>https://www.youtube.com/watch?v=9bZkp7q19f0</strong>)</li>
+                    <li>Copy its view count straight from its YouTube page (eg: <strong>2,541,849,994</strong>)</li>
+                    <li>Select your spaceship and fly away!</li>
+                </ul>
+            </div>
+        </div>
+
 
         <br>
 
-        <!-- the video player -->
-        <div id="player"></div>
-        <div id="stats"></div>
+        <!-- the main output: video, light-years count -->
+        <div class="row" id="mainRow">
+            <div class="col-md-12">
+            <!-- the video player -->
+            <div id="stats"></div>
+            <div id="player"></div>
+            </div>
+        </div>
 
         <!-- the end -->
       </div>
