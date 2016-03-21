@@ -1,13 +1,3 @@
-var tag,
-    firstScriptTag,
-    player,
-    videoId,
-    form,
-    video,
-    viewCount,
-    spaceShip, spaceShipSpeed,
-    statsDiv;
-
 tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 
@@ -33,5 +23,5 @@ form.addEventListener("submit", function(evt){
   spaceShip = spaceShip.options[spaceShip.selectedIndex].text;
 
   spawnPlayer(video, viewCount, spaceShip, spaceShipSpeed);
-  panStars();
+  loop();
 });
