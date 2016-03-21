@@ -16,7 +16,8 @@ form.addEventListener("submit", function(evt){
   evt.preventDefault();
   var video = form.elements['videoToExplore'].value;
   video = video.replace('https://www.youtube.com/watch?v=', '')
-  spawnPlayer(video);
+  //spawnPlayer(video);
+  getVideoStats(video, callback);
 });
 
 // all the methods!
