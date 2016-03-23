@@ -9,7 +9,8 @@ var tag,
     spaceShipSpeed,
     statsDiv,
     videoDuration,
-    videoNow;
+    videoNow = 0,
+    playerReady = false;
 
 var canvas,
     ctx,

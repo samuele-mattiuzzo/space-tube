@@ -41,6 +41,9 @@ function panPlanet() {
                     nextPlanet += 1;
                 } else {
                     // move the planet here
+                    // planet appears in the center of the canvas
+                    // enlarges to full size with name in it
+                    // deflates to darkness
                     // https://www.kirupa.com/html5/creating_simple_html5_canvas_animation.htm
                     angle += Math.PI / 64;
                 }
