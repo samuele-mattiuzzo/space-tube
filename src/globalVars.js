@@ -8,7 +8,8 @@ var tag,
     spaceShip = 'missile',
     spaceShipSpeed,
     statsDiv,
-    videoDuration;
+    videoDuration,
+    videoNow;
 
 var canvas,
     ctx,
@@ -22,8 +23,8 @@ canvas = document.getElementById("canvas");
 ctx = canvas.getContext("2d");
 
 // where we draw the planets
-//canvasPlanets = document.getElementById("planets");
-//ctxPlanets = canvasPlanets.getContext("2d");
+canvasPlanets = document.getElementById("planets");
+ctxPlanets = canvasPlanets.getContext("2d");
 
 // where we draw the stars
 background = document.getElementById("background");

@@ -11,6 +11,8 @@ var fps = 60;
 
 function loop() {
 
+    videoNow = player.getCurrentTime();
+
     panStars();
     //panPlanet();
     animateSpaceship();

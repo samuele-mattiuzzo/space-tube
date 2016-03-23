@@ -3,7 +3,9 @@ var nextPlanet = 1,
     traveledPlanets,
     step,
     isMoving = false,
-    planetImage;
+    planetImage,
+    maxPlanetRadius = 150,
+    angle = 1; // we get it back to 0 and stop the animation
 
 function loadPlanets() {
     traveledPlanets = [];
@@ -21,8 +23,7 @@ function loadPlanets() {
 }
 
 function checkPlanetTime() {
-    var videoNow = player.getCurrentTime();
-    return (videoNow >= step * nextPlanet);
+    return videoNow >= step * nextPlanet;
 }
 
 function panPlanet() {
@@ -32,6 +33,7 @@ function panPlanet() {
             var currentPlanet = traveledPlanets[nextPlanet - 1];
             planetImage = PlanetImage(currentPlanet[0], currentPlanet[2]);
             isMoving = true;
+            angle = 1; // to reset the animation
         } else {
             if (isMoving == true) {
                 if (isTime == false) {
@@ -39,6 +41,8 @@ function panPlanet() {
                     nextPlanet += 1;
                 } else {
                     // move the planet here
+                    // https://www.kirupa.com/html5/creating_simple_html5_canvas_animation.htm
+                    angle += Math.PI / 64;
                 }
             }
         }
