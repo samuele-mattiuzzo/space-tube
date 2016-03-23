@@ -22,6 +22,10 @@ form.addEventListener("submit", function(evt){
   spaceShipSpeed = parseInt(spaceShipSpeed);
   spaceShip = spaceShip.options[spaceShip.selectedIndex].text;
 
-  spawnPlayer(video, viewCount, spaceShip, spaceShipSpeed);
+  spawnPlayer(video);
+
+  loadSpaceship();
+  //loadPlanets();
+
   loop();
 });

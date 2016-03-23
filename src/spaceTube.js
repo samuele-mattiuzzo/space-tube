@@ -6,13 +6,13 @@ window.requestAnimFrame = (function(callback) {
   };
 })();
 
-// start panning the random stars image across the background canvas
+// the main loop
 var fps = 60;
-var offsetLeft=0;
 
 function loop() {
 
     panStars();
+    //panPlanet();
     animateSpaceship();
 
     setTimeout(function() {
