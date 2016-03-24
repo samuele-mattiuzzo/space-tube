@@ -1,3 +1,7 @@
+var tag,
+    firstScriptTag,
+    form;
+
 tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 
@@ -5,7 +9,6 @@ firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 form = document.forms[0];
-statsDiv = document.getElementById('stats');
 
 form.addEventListener("submit", function(evt){
   evt.preventDefault();
@@ -23,9 +26,4 @@ form.addEventListener("submit", function(evt){
   spaceShip = spaceShip.options[spaceShip.selectedIndex].text;
 
   spawnPlayer(video);
-
-  loadSpaceship();
-  //loadPlanets();
-
-  loop();
 });

@@ -1,3 +1,7 @@
+var statsDiv;
+
+statsDiv = document.getElementById('stats');
+
 // all the methods!
 function spawnPlayer(videoId) {
   player = new YT.Player('player', {
@@ -5,7 +9,7 @@ function spawnPlayer(videoId) {
     heihgt: '100%',
     videoId: videoId,
     events: {
-    'onReady': onPlayerReady,
+        'onReady': onPlayerReady
     }
   });
 }
@@ -14,6 +18,11 @@ function onPlayerReady(event) {
     videoDuration = player.getDuration();
     playerReady = true;
     printMessage();
+
+    loadStars();
+    loadSpaceship();
+
+    loop();
 }
 
 function printMessage() {

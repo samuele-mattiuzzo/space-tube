@@ -1,6 +1,15 @@
 // create an image of random stars
-var backImage = RandomStarsImage(),
-    offsetLeft = 0;
+var backImage,
+    offsetLeft = 0,
+    background,
+    bkCtx;
+
+// where we draw the stars
+background = document.getElementById("background");
+bkCtx = background.getContext("2d");
+
+
+function loadStars() { backImage = RandomStarsImage(); }
 
 function panStars() {
     // increase the left offset

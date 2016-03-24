@@ -5,7 +5,13 @@ var nextPlanet = 1,
     isMoving = false,
     planetImage,
     maxPlanetRadius = 150,
-    angle = 1; // we get it back to 0 and stop the animation
+    angle = 1, // we get it back to 0 and stop the animation
+    canvasPlanets,
+    ctxPlanets;
+
+// where we draw the planets
+canvasPlanets = document.getElementById("planets");
+ctxPlanets = canvasPlanets.getContext("2d");
 
 function loadPlanets() {
     traveledPlanets = [];
@@ -27,6 +33,9 @@ function checkPlanetTime() {
 }
 
 function panPlanet() {
+    ctxPlanets.beginPath();
+    ctxPlanets.arc(100,75,50,0,2*Math.PI);
+    ctxPlanets.stroke();
     if (nextPlanet <= traveledPlanets.length) {
         var isTime = checkPlanetTime();
         if (isTime == true && isMoving == false) {
@@ -46,6 +55,7 @@ function panPlanet() {
                     // deflates to darkness
                     // https://www.kirupa.com/html5/creating_simple_html5_canvas_animation.htm
                     angle += Math.PI / 64;
+
                 }
             }
         }

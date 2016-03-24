@@ -11,13 +11,8 @@ var fps = 60;
 
 function loop() {
 
-    if (playerReady == true) {
-        if (player.getPlayerState() == 1) {
-            videoNow = player.getCurrentTime();
-        }
-    }
+    //videoNow = player.getCurrentTime();
     panStars();
-    //panPlanet();
     animateSpaceship();
 
     setTimeout(function() {

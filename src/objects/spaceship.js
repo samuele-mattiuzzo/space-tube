@@ -4,7 +4,13 @@ var img,
     dy = 0.8, // step
     x = 50,
     y = startPos,
-    asset;
+    asset,
+    ctx,
+    canvas;
+
+// where we draw the spaceship
+canvas = document.getElementById("canvas");
+ctx = canvas.getContext("2d");
 
 function loadSpaceship() {
     img = new Image();
