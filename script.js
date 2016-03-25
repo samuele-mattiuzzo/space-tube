@@ -13,17 +13,17 @@ form = document.forms[0];
 form.addEventListener("submit", function(evt){
   evt.preventDefault();
 
-  video = form.elements['videoToExplore'].value;
-  video = video.replace('https://www.youtube.com/watch?v=', '')
+  var videoId = form.elements['videoToExplore'].value;
+  videoid = videoId.replace('https://www.youtube.com/watch?v=', '')
 
-  viewCount = form.elements['viewCount'].value;
+  var viewCount = form.elements['viewCount'].value;
   viewCount = viewCount.replace(/,/g, '');
   viewCount = parseInt(viewCount);
 
-  spaceShip = form.elements['spaceShip'];
-  spaceShipSpeed = spaceShip.options[spaceShip.selectedIndex].value;
+  var spaceShip = form.elements['spaceShip'];
+  var spaceShipSpeed = spaceShip.options[spaceShip.selectedIndex].value;
   spaceShipSpeed = parseInt(spaceShipSpeed);
   spaceShip = spaceShip.options[spaceShip.selectedIndex].text;
 
-  spawnPlayer(video);
+  spawnPlayer(videoId, viewCount, spaceShipSpeed, spaceShip);
 });

@@ -1,13 +1,3 @@
-var player,
-    videoId,
-    video,
-    viewCount,
-    spaceShip = 'missile',
-    spaceShipSpeed,
-    videoDuration,
-    videoNow = 0,
-    playerReady = false;
-
 // space variables (in miles)
 var AU = 92957130.3587,
     PLANETS = [

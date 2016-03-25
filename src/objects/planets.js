@@ -1,5 +1,5 @@
 var nextPlanet = 1,
-    totalTravel,
+    videoDuration = 0,
     traveledPlanets,
     step,
     isMoving = false,
@@ -13,22 +13,23 @@ var nextPlanet = 1,
 canvasPlanets = document.getElementById("planets");
 ctxPlanets = canvasPlanets.getContext("2d");
 
-function loadPlanets() {
+function loadPlanets(totalDistance, vd) {
     traveledPlanets = [];
-    totalTravel = convertToDistance(
-        (viewCount * videoDuration)/3600, spaceShipSpeed);
-    totalTravel = Math.ceil(totalTravel / AU); // let's not be picky
+    videoDuration = vd;
+    totalDistance = Math.ceil(totalDistance / AU); // let's not be picky
 
+    // creates the traveled planets list
     for (var i=0; i<PLANETS.length; i++) {
-        if (PLANETS[i][1] <= totalTravel) {
+        if (PLANETS[i][1] <= totalDistance) {
             traveledPlanets.push(PLANETS[i]);
         }
     }
 
+    // for every planet calculates the % distance and matches it with the video player
     step = Math.floor(videoDuration / traveledPlanets.length);  // in seconds
 }
 
-function checkPlanetTime() {
+function checkPlanetTime(videoNow) {
     return videoNow >= step * nextPlanet;
 }
 
@@ -37,7 +38,7 @@ function panPlanet() {
     ctxPlanets.arc(100,75,50,0,2*Math.PI);
     ctxPlanets.stroke();
     if (nextPlanet <= traveledPlanets.length) {
-        var isTime = checkPlanetTime();
+        var isTime = checkPlanetTime(1);
         if (isTime == true && isMoving == false) {
             var currentPlanet = traveledPlanets[nextPlanet - 1];
             planetImage = PlanetImage(currentPlanet[0], currentPlanet[2]);
