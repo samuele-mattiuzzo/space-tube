@@ -13,8 +13,11 @@ function spawnPlayer(videoId, vc, ssp, ss) {
   spaceShip = ss;
   spaceShipSpeed = ssp;
   viewCount = vc;
-
+  window.YTConfig = {
+      'host': 'https://www.youtube.com'
+  };
   player = new YT.Player('player', {
+    playerVars: {'enablejsapi': true, 'fs': 0},
     width: '100%',
     heihgt: '100%',
     videoId: videoId,
@@ -33,10 +36,11 @@ function onPlayerReady(event) {
     loadStars();
     loadSpaceship();
     preFlight(player);
-    //loadPlanets(totalDistance, videoDuration);
+    loadPlanets(totalDistance, videoDuration);
 
     // begin loop
     loop();
+    planetLoop();
 }
 
 function printMessage() {

@@ -9,7 +9,8 @@ window.requestAnimFrame = (function(callback) {
 // the main loop
 var fps = 60,
     ytp,
-    videoNow;
+    videoNow,
+    shouldMove=false;
 
 function preFlight(player) {
     ytp = player;
@@ -19,6 +20,7 @@ function loop() {
     // the stars panning and the spaceship keep going
     panStars();
     animateSpaceship();
+    planetLoop();
 
     setTimeout(function() {
         requestAnimFrame(loop);
@@ -28,12 +30,12 @@ function loop() {
 function planetLoop() {
     // the planet should appear just when it's time
     // and if the player is playing
-    videoNow = ytp.getCurrentTime();
-    if (checkPlanetTime(videoNow)) {
-        panPlanet();
+    if (shouldMove == false) {
+        videoNow = Math.floor((ytp.getCurrentTime() * 100) / ytp.getDuration());
+        if (checkPlanetTime(videoNow)) {
+            shouldMove = true;
+        }
+    } else {
+        shouldMove = panPlanet();
     }
-
-    setTimeout(function() {
-        requestAnimFrame(planetLoop);
-    }, 1000 / fps);
 }
