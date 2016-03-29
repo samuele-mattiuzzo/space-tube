@@ -33,8 +33,8 @@ function RandomStarsImage() {
     bkCtx.beginPath();
 
     for(var n=0; n<100; n++){
-        var x = parseInt(Math.random()*canvas.width),
-            y = parseInt(Math.random()*canvas.height),
+        var x = parseInt(Math.random()*background.width),
+            y = parseInt(Math.random()*background.height),
             radius = Math.random()*3;
 
         bkCtx.arc(x, y, radius, 0, Math.PI*2, false);

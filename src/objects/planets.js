@@ -8,8 +8,6 @@ var planet,
     nextPlanet = 1,
     videoDuration = 0,
     traveledPlanets = [],
-    maxPlanetRadius = 150,
-    angle = 1, // we get it back to 0 and stop the animation
     canvasPlanets,
     ctxPlanets;
 
@@ -24,27 +22,36 @@ function loadPlanets(totalDistance, vd) {
 
     // creates the traveled planets list
     for (var i=0; i<PLANETS.length; i++) {
-        if (PLANETS[i][1] <= totalDistance) {
-            traveledPlanets.push(PLANETS[i]);
+        var planet = PLANETS[i];
+        if (planet[1] <= totalDistance) {
+            var step = Math.ceil( (planet[1] * 100) / totalDistance );
+            planet.push(step);
+            traveledPlanets.push(planet);
         }
     }
 
-    // for every planet calculates the % distance and matches it with the video player
-    for (var i=0; i<traveledPlanets.length; i++) {
-        var planetDistance = Math.ceil(traveledPlanets[i][1] / AU),
-            step = Math.ceil((planetDistance * 100) / totalDistance);
-        traveledPlanets[i].push(step); // in %
+    // done with planets, extend to galaxies
+    var totalDistanceLY = totalDistance / 63241;  // in LightYears
+    for (var i=0; i<GALAXIES.length; i++) {
+        var galaxy = GALAXIES[i];
+        if (galaxy[1] <= totalDistanceLY) {
+            var step = Math.ceil( (galaxy[1] * 100) / totalDistanceLY );
+            galaxy.push(step);
+            traveledPlanets.push(galaxy);
+        }
     }
 }
 
 function checkPlanetTime(videoNow) {
     // videoNow is the current % of the video
-    var isTime = videoNow >= traveledPlanets[nextPlanet -1][3];
-    if (isTime == true) {
-        planet = traveledPlanets[nextPlanet - 1];
-        nextPlanet += 1;
-        x = startPos;
-        PlanetImage(planet[0], planet[2], planet[3]);
+    if (traveledPlanets.length >= nextPlanet) {
+        var isTime = videoNow >= traveledPlanets[nextPlanet -1][3];
+        if (isTime == true) {
+            planet = traveledPlanets[nextPlanet - 1];
+            nextPlanet += 1;
+            x = startPos;
+            PlanetImage(planet[0], planet[2], planet[3]);
+        }
     }
     return isTime;
 }
@@ -65,6 +72,12 @@ function PlanetImage(name, color, percent) {
     ctxPlanets.lineWidth = 5;
     ctxPlanets.strokeStyle = '#003300';
     ctxPlanets.stroke();
-    ctxPlanets.font = "14px Arial";
-    ctxPlanets.fillText(name + " (" + percent + "%)", x, y);
+
+    // text
+    ctxPlanets.font = "20px Arial sans-serif";
+    ctxPlanets.fillStyle = "#000";
+    var text = name + " (" + percent + "%)";
+    var width = ctxPlanets.measureText(text).width;
+    var height = ctxPlanets.measureText("w").width; // this is a GUESS of height
+    ctxPlanets.fillText(text, x - (width/2) , y + (height/2));
 }

@@ -1,9 +1,9 @@
 var img,
-    startPos = 230,
-    endPos = 120,
+    sstartPos = 230,
+    sendPos = 120,
     dy = 0.8, // step
-    x = 50,
-    y = startPos,
+    sx = 50,
+    sy = sstartPos,
     asset,
     ctx,
     canvas;
@@ -28,10 +28,10 @@ function animateSpaceship() {
 
     // down and up, continuously
     ctx.clearRect(0, 0, 1000, 450);
-    y += dy;
-    if (y < endPos || y > startPos) {
+    sy += dy;
+    if (sy < sendPos || sy > sstartPos) {
         dy = -dy;
     }
-    ctx.drawImage(img, x, y);
+    ctx.drawImage(img, sx, sy);
 
 }
