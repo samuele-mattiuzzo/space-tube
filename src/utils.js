@@ -1,5 +1,17 @@
 function convertToDistance(timeSpent, vehicleSpeed) {
-    return timeSpent * vehicleSpeed;
+    return Math.round(timeSpent * vehicleSpeed);
+}
+
+function humanReadableDistance(totalDistance) {
+    // converts a long number into 1.234.567 format
+    // reverses the string to match it every 3 then re-reverses it
+    // otherwise we'd end with something like 123.456.7 rather than 1.234.567
+    totalDistance = totalDistance.toString();
+    tmp = totalDistance.split("").reverse().join("");
+    tmp = tmp.match(/.{3}/g);
+    tmp = tmp.join(".");
+    tmp = tmp.split("").reverse().join("");
+    return tmp
 }
 
 function secondsToString(seconds) {

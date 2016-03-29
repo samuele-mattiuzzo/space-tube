@@ -7,15 +7,35 @@ window.requestAnimFrame = (function(callback) {
 })();
 
 // the main loop
-var fps = 60;
+var fps = 60,
+    ytp,
+    videoNow,
+    shouldMove=false;
+
+function preFlight(player) {
+    ytp = player;
+}
 
 function loop() {
-
+    // the stars panning and the spaceship keep going
     panStars();
-    //panPlanet();
     animateSpaceship();
+    planetLoop();
 
     setTimeout(function() {
         requestAnimFrame(loop);
     }, 1000 / fps);
+}
+
+function planetLoop() {
+    // the planet should appear just when it's time
+    // and if the player is playing
+    if (shouldMove == false) {
+        videoNow = Math.floor((ytp.getCurrentTime() * 100) / ytp.getDuration());
+        if (checkPlanetTime(videoNow)) {
+            shouldMove = true;
+        }
+    } else {
+        shouldMove = panPlanet();
+    }
 }

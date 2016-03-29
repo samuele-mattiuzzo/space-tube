@@ -1,6 +1,15 @@
 // create an image of random stars
-var backImage = RandomStarsImage(),
-    offsetLeft = 0;
+var backImage,
+    offsetLeft = 0,
+    background,
+    bkCtx;
+
+// where we draw the stars
+background = document.getElementById("background");
+bkCtx = background.getContext("2d");
+
+
+function loadStars() { backImage = RandomStarsImage(); }
 
 function panStars() {
     // increase the left offset
@@ -24,8 +33,8 @@ function RandomStarsImage() {
     bkCtx.beginPath();
 
     for(var n=0; n<100; n++){
-        var x = parseInt(Math.random()*canvas.width),
-            y = parseInt(Math.random()*canvas.height),
+        var x = parseInt(Math.random()*background.width),
+            y = parseInt(Math.random()*background.height),
             radius = Math.random()*3;
 
         bkCtx.arc(x, y, radius, 0, Math.PI*2, false);

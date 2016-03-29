@@ -1,42 +1,22 @@
-var tag,
-    firstScriptTag,
-    player,
-    videoId,
-    form,
-    video,
-    viewCount,
-    spaceShip = 'missile',
-    spaceShipSpeed,
-    statsDiv,
-    videoDuration;
-
-var canvas,
-    ctx,
-    canvasPlanets,
-    ctxPlanets,
-    background,
-    bkCtx;
-
-// where we draw the spaceship
-canvas = document.getElementById("canvas");
-ctx = canvas.getContext("2d");
-
-// where we draw the planets
-//canvasPlanets = document.getElementById("planets");
-//ctxPlanets = canvasPlanets.getContext("2d");
-
-// where we draw the stars
-background = document.getElementById("background");
-bkCtx = background.getContext("2d");
-
 // space variables (in miles)
 var AU = 92957130.3587,
     PLANETS = [
-        ['Moon', 0.00031197621, ''],
-        ['Mars', 0.52, ''],
-        ['Sun', 1, ''],
-        ['Jupiter', 4.2, ''],
-        ['Saturn', 8.52, ''],
-        ['Uranus', 18.21, ''],
-        ['Neptune', 29.09, ''],
+        ['Moon', 0.00031197621, 'grey'],
+        ['Mars', 0.52, 'red'],
+        ['Sun', 1, 'yellow'],
+        ['Jupiter', 4.2, 'purple'],
+        ['Saturn', 8.52, 'brown'],
+        ['Uranus', 18.21, 'green'],
+        ['Neptune', 29.09, 'blue'],
+    ],
+    GALAXIES = [
+        ['Edge of Milky Way', 0.027, 'white'],
+        ['Sagittarius', 0.081, 'white'],
+        ['Large Magellanic Cloud', 0.163, 'white'],
+        ['Ursa Minor', 0.206, 'white'],
+        ['Draco', 0.258, 'white'],
+        ['Sculptor Dwarf', 0.287, 'white'],
+        ['Carina', 0.330, 'white'],
+        ['Fornax', 0.460, 'white'],
+        ['Leo I Dwarf', 0.820, 'white'],
     ];
